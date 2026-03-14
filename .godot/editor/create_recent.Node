@@ -1,0 +1,13 @@
+Area2D
+RigidBody2D
+CollisionShape2D
+Timer
+CharacterBody2D
+Node2D
+SubViewport
+SubViewportContainer
+AnimatedSprite2D
+Sprite2D
+StaticBody2D
+Camera2D
+TileMap

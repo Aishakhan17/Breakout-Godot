@@ -1,0 +1,15 @@
+[gd_scene format=3 uid="uid://bw1qp8dejcy5x"]
+
+[ext_resource type="PackedScene" uid="uid://t0vmtdcsn5a" path="res://scenes/master_brick.tscn" id="1_vj1im"]
+[ext_resource type="Texture2D" uid="uid://butcqvkc17q64" path="res://assets/bricks.png" id="2_ee8y4"]
+
+[node name="masterBrick" unique_id=1579908869 instance=ExtResource("1_vj1im")]
+
+[node name="Sprite2D" parent="." index="0" unique_id=27019091]
+scale = Vector2(1.7, 1.2)
+texture = ExtResource("2_ee8y4")
+region_enabled = true
+region_rect = Rect2(111.852, 46.963, 32.741, 17.185)
+
+[node name="CollisionShape2D" parent="." index="1" unique_id=808260438]
+visible = false

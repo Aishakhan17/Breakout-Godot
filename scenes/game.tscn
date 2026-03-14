@@ -1,0 +1,52 @@
+[gd_scene format=3 uid="uid://xwy8soem4jt0"]
+
+[ext_resource type="Script" uid="uid://c4mx8fgrcd3ni" path="res://scripts/game.gd" id="1_lnu2h"]
+[ext_resource type="PackedScene" uid="uid://op85vvfmyt8n" path="res://scenes/paddle.tscn" id="1_uwrxv"]
+[ext_resource type="PackedScene" uid="uid://b6lnxt3usn2fa" path="res://scenes/ball.tscn" id="2_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://dg3dxy0dukdfk" path="res://scenes/red_brick.tscn" id="3_lnu2h"]
+[ext_resource type="Script" uid="uid://dnctx6nj2w0ii" path="res://scripts/ball.gd" id="4_0tnpc"]
+[ext_resource type="Script" uid="uid://k8ly7g7e873j" path="res://scripts/bricks_container.gd" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://63sxbgrek18h" path="res://scenes/yellow_brick.tscn" id="5_gee14"]
+[ext_resource type="PackedScene" uid="uid://bw1qp8dejcy5x" path="res://scenes/orange_brick.tscn" id="7_0tnpc"]
+[ext_resource type="PackedScene" uid="uid://j486e7ml552c" path="res://scenes/green_brick.tscn" id="8_vtaks"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
+size = Vector2(21, 641)
+
+[node name="Game" type="Node2D" unique_id=467057230]
+script = ExtResource("1_lnu2h")
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1930642351]
+
+[node name="Paddle" parent="." unique_id=1374792210 instance=ExtResource("1_uwrxv")]
+position = Vector2(0, 301)
+
+[node name="Ball" parent="." unique_id=1996624376 instance=ExtResource("2_yqjtg")]
+position = Vector2(0, 277)
+script = ExtResource("4_0tnpc")
+
+[node name="LeftWall" type="StaticBody2D" parent="." unique_id=249666740]
+position = Vector2(-580, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=2135659287]
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="RightWall" type="StaticBody2D" parent="." unique_id=1034976843]
+position = Vector2(580, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1302423265]
+shape = SubResource("RectangleShape2D_yqjtg")
+
+[node name="BricksContainer" type="Node2D" parent="." unique_id=690025626]
+script = ExtResource("4_lbhrr")
+yellow_brick = ExtResource("5_gee14")
+red_brick = ExtResource("3_lnu2h")
+orange_brick = ExtResource("7_0tnpc")
+green_brick = ExtResource("8_vtaks")
+
+[node name="BallSpawnTimer" type="Timer" parent="." unique_id=334788414]
+wait_time = 0.516
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="BallSpawnTimer" to="." method="_on_ball_spawn_timer_timeout"]
