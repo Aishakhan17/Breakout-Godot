@@ -1,6 +1,4 @@
-res://scenes/paddle.tscn
-res://scripts/paddle.gd
-res://scenes/ball.tscn
 res://scenes/game.tscn
-res://scripts/game.gd
-res://scripts/ball.gd
+res://scripts/paddle.gd
+res://scenes/paddle.tscn
+res://scenes/ball.tscn

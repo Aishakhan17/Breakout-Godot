@@ -1,7 +1,7 @@
 extends CharacterBody2D
 
 var window_size: Vector2
-const START_SPEED : int = 600
+const START_SPEED : int = 400
 #var initial_position: Vector2
 
 #const ACCELERATION : int = 50
