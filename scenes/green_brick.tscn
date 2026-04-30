@@ -6,11 +6,11 @@
 [node name="masterBrick" unique_id=1579908869 instance=ExtResource("1_bpktg")]
 
 [node name="Sprite2D" parent="." index="0" unique_id=27019091]
+position = Vector2(26.999998, 9.999999)
 scale = Vector2(1.7, 1.2)
 texture = ExtResource("2_fve5c")
 region_enabled = true
 region_rect = Rect2(111.852, 15.852, 32.741, 17.185)
 
 [node name="CollisionShape2D" parent="." index="1" unique_id=808260438]
-visible = false
-position = Vector2(0, -0.25)
+position = Vector2(27.5, 10.75)

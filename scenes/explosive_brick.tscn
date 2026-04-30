@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://b5trdvdol5tlp"]
+
+[ext_resource type="Texture2D" uid="uid://butcqvkc17q64" path="res://assets/bricks.png" id="1_5j0ts"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_l0ehk"]
+size = Vector2(33, 17)
+
+[node name="StaticBody2D" type="StaticBody2D" unique_id=313991212]
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=72533444]
+texture = ExtResource("1_5j0ts")
+region_enabled = true
+region_rect = Rect2(174.889, -0.333, 32.741, 17.185)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=935799360]
+shape = SubResource("RectangleShape2D_l0ehk")

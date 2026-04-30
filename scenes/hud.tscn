@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://dgtkcktpnav54"]
+
+[ext_resource type="Script" uid="uid://cjh44k5od8kxo" path="res://scripts/score.gd" id="1_ahhtf"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1260922749]
+
+[node name="PanelContainer" type="PanelContainer" parent="." unique_id=1512777183]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer" unique_id=1914490765]
+layout_mode = 2
+
+[node name="Score" type="Label" parent="PanelContainer/HBoxContainer" unique_id=2145919153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ahhtf")
+script = ExtResource("1_ahhtf")

@@ -2,51 +2,56 @@
 
 [ext_resource type="Script" uid="uid://c4mx8fgrcd3ni" path="res://scripts/game.gd" id="1_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://op85vvfmyt8n" path="res://scenes/paddle.tscn" id="1_uwrxv"]
+[ext_resource type="Texture2D" uid="uid://cuimmmkqces5l" path="res://assets/Backround_Tiles.png" id="2_p57ef"]
 [ext_resource type="PackedScene" uid="uid://b6lnxt3usn2fa" path="res://scenes/ball.tscn" id="2_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://dg3dxy0dukdfk" path="res://scenes/red_brick.tscn" id="3_lnu2h"]
 [ext_resource type="Script" uid="uid://dnctx6nj2w0ii" path="res://scripts/ball.gd" id="4_0tnpc"]
-[ext_resource type="Script" uid="uid://k8ly7g7e873j" path="res://scripts/bricks_container.gd" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://63sxbgrek18h" path="res://scenes/yellow_brick.tscn" id="5_gee14"]
-[ext_resource type="PackedScene" uid="uid://bw1qp8dejcy5x" path="res://scenes/orange_brick.tscn" id="7_0tnpc"]
-[ext_resource type="PackedScene" uid="uid://j486e7ml552c" path="res://scenes/green_brick.tscn" id="8_vtaks"]
+[ext_resource type="PackedScene" uid="uid://dgtkcktpnav54" path="res://scenes/hud.tscn" id="10_vtaks"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yqjtg"]
 size = Vector2(21, 641)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vtaks"]
+size = Vector2(1169, 20)
+
 [node name="Game" type="Node2D" unique_id=467057230]
 script = ExtResource("1_lnu2h")
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=1930642351]
+[node name="Background" type="Sprite2D" parent="." unique_id=1771921047]
+z_index = -1
+position = Vector2(554, 1203)
+scale = Vector2(13.875335, 18.59912)
+texture = ExtResource("2_p57ef")
 
 [node name="Paddle" parent="." unique_id=1374792210 instance=ExtResource("1_uwrxv")]
-position = Vector2(0, 301)
+position = Vector2(576, 600)
 
 [node name="Ball" parent="." unique_id=1996624376 instance=ExtResource("2_yqjtg")]
-position = Vector2(0, 277)
+position = Vector2(576, 583)
 script = ExtResource("4_0tnpc")
 
 [node name="LeftWall" type="StaticBody2D" parent="." unique_id=249666740]
-position = Vector2(-580, 0)
+position = Vector2(-1, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LeftWall" unique_id=2135659287]
 shape = SubResource("RectangleShape2D_yqjtg")
 
 [node name="RightWall" type="StaticBody2D" parent="." unique_id=1034976843]
-position = Vector2(580, 0)
+position = Vector2(1149, 324)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RightWall" unique_id=1302423265]
 shape = SubResource("RectangleShape2D_yqjtg")
 
-[node name="BricksContainer" type="Node2D" parent="." unique_id=690025626]
-script = ExtResource("4_lbhrr")
-yellow_brick = ExtResource("5_gee14")
-red_brick = ExtResource("3_lnu2h")
-orange_brick = ExtResource("7_0tnpc")
-green_brick = ExtResource("8_vtaks")
+[node name="TopWall" type="StaticBody2D" parent="." unique_id=1775569660]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TopWall" unique_id=130097947]
+position = Vector2(575, -1)
+shape = SubResource("RectangleShape2D_vtaks")
 
 [node name="BallSpawnTimer" type="Timer" parent="." unique_id=334788414]
 wait_time = 0.516
 one_shot = true
 autostart = true
+
+[node name="HUD" parent="." unique_id=1260922749 instance=ExtResource("10_vtaks")]
 
 [connection signal="timeout" from="BallSpawnTimer" to="." method="_on_ball_spawn_timer_timeout"]

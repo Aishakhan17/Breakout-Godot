@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://whwe37rp3pfd" path="res://scripts/paddle.gd" id="2_y7wee"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y7wee"]
-size = Vector2(89.52382, 23.333334)
+size = Vector2(72.38095, 22.142859)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_y7wee"]
 atlas = ExtResource("1_3xiby")
@@ -25,7 +25,7 @@ animations = [{
 script = ExtResource("2_y7wee")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1672780400]
-position = Vector2(-1.0000001, 11)
+position = Vector2(-1.0000002, 11.624999)
 scale = Vector2(1.05, 1.05)
 shape = SubResource("RectangleShape2D_y7wee")
 debug_color = Color(0.6902917, 0.48658592, 0.30377272, 0.41960785)

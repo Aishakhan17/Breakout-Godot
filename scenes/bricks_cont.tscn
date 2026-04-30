@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://dkbqtx6jen5hn"]
+
+[ext_resource type="Script" uid="uid://bxdbc7ayx7fs2" path="res://scripts/bricks_cont.gd" id="1_u5try"]
+[ext_resource type="PackedScene" uid="uid://63sxbgrek18h" path="res://scenes/yellow_brick.tscn" id="2_f6jwq"]
+[ext_resource type="PackedScene" uid="uid://dg3dxy0dukdfk" path="res://scenes/red_brick.tscn" id="3_wqh80"]
+[ext_resource type="PackedScene" uid="uid://bw1qp8dejcy5x" path="res://scenes/orange_brick.tscn" id="4_h7ryi"]
+[ext_resource type="PackedScene" uid="uid://b5trdvdol5tlp" path="res://scenes/explosive_brick.tscn" id="5_f6jwq"]
+[ext_resource type="PackedScene" uid="uid://j486e7ml552c" path="res://scenes/green_brick.tscn" id="5_nb56a"]
+
+[node name="BricksCont" type="Node2D" unique_id=1931270911]
+script = ExtResource("1_u5try")
+yellow_brick = ExtResource("2_f6jwq")
+red_brick = ExtResource("3_wqh80")
+orange_brick = ExtResource("4_h7ryi")
+green_brick = ExtResource("5_nb56a")
+explosive_brick = ExtResource("5_f6jwq")

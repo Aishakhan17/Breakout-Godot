@@ -1,4 +1,13 @@
+res://scenes/bricks_cont.tscn
+res://scripts/bricks_cont.gd
+res://scripts/game.gd
 res://scenes/game.tscn
-res://scripts/paddle.gd
-res://scenes/paddle.tscn
-res://scenes/ball.tscn
+res://scripts/viewport_config.gd
+res://scripts/patternlibrary.gd
+res://scenes/red_brick.tscn
+res://scenes/green_brick.tscn
+res://scenes/yellow_brick.tscn
+res://scenes/orange_brick.tscn
+res://scenes/master_brick.tscn
+res://scripts/data_config.gd
+res://scenes/explosive_brick.tscn

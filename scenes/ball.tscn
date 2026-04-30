@@ -29,5 +29,3 @@ sprite_frames = SubResource("SpriteFrames_cxlvu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246841455]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_f7cbr")
-
-[node name="RigidBody2D" type="RigidBody2D" parent="." unique_id=1486277537]
