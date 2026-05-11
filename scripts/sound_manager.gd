@@ -44,7 +44,7 @@ func brick_destroyed():
 	if player_used:
 		player_used.queue_free()
 		players_in_use.pop_back()
-		print("players_in_use", len(players_in_use))
+		#print("players_in_use", len(players_in_use))
 	
 	
 func play_background_music(game_level):

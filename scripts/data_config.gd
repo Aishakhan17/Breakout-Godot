@@ -2,7 +2,7 @@ extends Node
 
 
 #---------------- Initialize game data parameters ------------------------------
-var current_level: int = 2
+var current_level: int = 1
 var levels:  Dictionary
 var score: int = 0
 var brick_count: int = 0

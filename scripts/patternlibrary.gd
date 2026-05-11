@@ -3,7 +3,7 @@ extends Resource
 
 @export var max_rows = ViewportConfig.num_rows
 @export var max_cols = ViewportConfig.num_cols
-@export var min_rows: int = 6
+@export var min_rows: int = 7
 @export var min_cols: int = (max_cols*2/3)
 @export var max_level = 12
 @export var pattern_library: Dictionary
@@ -66,10 +66,7 @@ func spawn_pyramid(n):
 	return arr
 		
 func spawn_maze(rows, cols):
-	#if cols%2 == 0:
-		#cols -= 1
-	#if rows%2 == 0: 
-		#rows -= 1
+	print("rows", rows, "cols", cols)
 	var arr = []
 	for i in range(rows):
 		var sub_arr: Array[int]
@@ -86,12 +83,14 @@ func spawn_maze(rows, cols):
 			else:
 				sub_arr.fill(1)
 				arr.append(sub_arr) 
+	for row in arr:
+		print("row", row)
 	return arr
 	
-func spawn_tunnels():
+func spawn_tunnels(rows, cols):
 	pass
 
-func spawn_nested_squares():
+func spawn_nested_squares(rows, cols):
 	pass 
 				
 

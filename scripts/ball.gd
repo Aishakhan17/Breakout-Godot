@@ -36,7 +36,7 @@ func _physics_process(delta: float) -> void:
 	var collision = move_and_collide(velocity)
 	if collision:
 		var brick_pos = collision.get_position()
-		print("collision_info", collision)
+		#print("collision_info", collision)
 		direction = direction.bounce(collision.get_normal()).normalized()
 		var remainder = collision.get_remainder()
 		move_and_collide(remainder.bounce(collision.get_normal()).normalized())

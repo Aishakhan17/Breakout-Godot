@@ -2,11 +2,11 @@ extends Node2D
 
 #-------export individual bricks as packed scenes--------
 
-@export var yellow_brick: PackedScene
-@export var red_brick: PackedScene
-@export var orange_brick: PackedScene
-@export var green_brick: PackedScene
-@export var explosive_brick: PackedScene
+@export var yellow_brick: PackedScene = preload("res://scenes/yellow_brick.tscn")
+@export var red_brick: PackedScene = preload("res://scenes/red_brick.tscn")
+@export var orange_brick: PackedScene = preload("res://scenes/orange_brick.tscn")
+@export var green_brick: PackedScene = preload("res://scenes/green_brick.tscn")
+@export var explosive_brick: PackedScene = preload("res://scenes/explosive_brick.tscn")
 
 #-------Set UI Parameters for rendering--------
 @export var usable_screen_width: float = ViewportConfig.usable_screen_width
@@ -33,6 +33,7 @@ func _ready() -> void:
 	1: red_brick,
 	2: orange_brick,
 	3: green_brick,
+	4: explosive_brick,
 }	
 
 
@@ -79,9 +80,15 @@ func display_bricks():
 
 #function to instantiate a brick
 func instantiate_brick():
+	var brick_type: int
 	var brick_index = generate_random_number()
-	var new_brick = bricks_dict[brick_index]
-	return new_brick.instantiate()
+	if brick_index == 4:
+		brick_type = 1
+	else:
+		brick_type = 0
+	var new_brick = bricks_dict[brick_index].instantiate()
+	new_brick.type = brick_type
+	return new_brick
 
 	
 #function deletes a brick from the brick dictionary
@@ -104,6 +111,6 @@ func destroy_bricks_grid():
 #--------------------Misc Helper Functions--------------------------------------
 func generate_random_number() -> int:
 	var rng = RandomNumberGenerator.new()
-	var random_number = rng.randi_range(0,3)
+	var random_number = rng.randi_range(0,4)
 	return random_number
 	
