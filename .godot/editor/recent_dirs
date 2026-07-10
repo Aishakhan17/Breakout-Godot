@@ -1,8 +1,12 @@
-res://scripts/
-res://assets/explosion-1-f/
-res://scenes/
-res://assets/explosion-b/
-res://assets/explosion-b/Sprites/
+res://controllers/
+res://gameworld/entities/bricks/
+res://resources/
+res://gameworld/entities/paddle/
+res://gameworld/entities/ball/
+res://game/
+res://gameworld/
+res://main/
 res://assets/
+res://assets/explosion-1-f/
 /home/aisha/Documents/Brick Breaker Godot/brick-breaker/
 res://

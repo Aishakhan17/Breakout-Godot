@@ -1,1 +1,3 @@
+AtlasTexture
+Resource
 Animation

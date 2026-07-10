@@ -1,0 +1,58 @@
+[gd_scene format=3 uid="uid://dgtkcktpnav54"]
+
+[ext_resource type="Script" uid="uid://cjh44k5od8kxo" path="res://scripts/score.gd" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://gqtg4tw5lrgq" path="res://scripts/health_container.gd" id="2_5ysmq"]
+[ext_resource type="Texture2D" uid="uid://cmg2fdsruraks" path="res://resources/heart_full.tres" id="3_6fi6k"]
+[ext_resource type="Texture2D" uid="uid://bg43xuao1tbkm" path="res://resources/heart_empty.tres" id="4_uo2fv"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+
+[node name="HUD" type="CanvasLayer" unique_id=1260922749]
+scale = Vector2(1.15, 1.15)
+transform = Transform2D(1.15, 0, 0, 1.15, 0, 0)
+
+[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=573083098]
+offset_right = 78.0
+offset_bottom = 40.0
+size_flags_horizontal = 3
+
+[node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1512777183]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="ScoreLabelContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer" unique_id=1914490765]
+layout_mode = 2
+alignment = 1
+
+[node name="Score" type="Label" parent="HBoxContainer/PanelContainer/ScoreLabelContainer" unique_id=2145919153]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "Score: 0"
+label_settings = SubResource("LabelSettings_ahhtf")
+script = ExtResource("1_ahhtf")
+
+[node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=167881213]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="HealthContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=534432627]
+layout_mode = 2
+alignment = 1
+script = ExtResource("2_5ysmq")
+heart_full = ExtResource("3_6fi6k")
+heart_empty = ExtResource("4_uo2fv")
+
+[node name="Health" type="Label" parent="HBoxContainer/PanelContainer2/HealthContainer" unique_id=2129732686]
+layout_mode = 2
+
+[node name="heart_1" type="TextureRect" parent="HBoxContainer/PanelContainer2/HealthContainer" unique_id=1811971349]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="heart_2" type="TextureRect" parent="HBoxContainer/PanelContainer2/HealthContainer" unique_id=1904060562]
+layout_mode = 2
+stretch_mode = 5
+
+[node name="heart_3" type="TextureRect" parent="HBoxContainer/PanelContainer2/HealthContainer" unique_id=319574098]
+layout_mode = 2
+stretch_mode = 5

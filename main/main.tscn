@@ -1,0 +1,55 @@
+[gd_scene format=3 uid="uid://w6k7a2h8b5ge"]
+
+[ext_resource type="Script" uid="uid://yt831wa41bkb" path="res://main/main.gd" id="1_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://bcuojhgcs0ok8" path="res://game/game.tscn" id="1_kfbq2"]
+[ext_resource type="PackedScene" uid="uid://vorwq5us7rl8" path="res://gameworld/game_world.tscn" id="2_kfbq2"]
+[ext_resource type="Script" uid="uid://b5kke1ie1ueyw" path="res://controllers/gameplay_controller.gd" id="3_67ri8"]
+[ext_resource type="Script" uid="uid://ue1bebejv5o" path="res://controllers/level_manager.gd" id="4_grrlh"]
+[ext_resource type="Script" uid="uid://bajoicqwqhlei" path="res://controllers/menu_manager.gd" id="6_bsumw"]
+[ext_resource type="Script" uid="uid://bxdbc7ayx7fs2" path="res://controllers/bricks_manager.gd" id="7_bsumw"]
+[ext_resource type="PackedScene" uid="uid://b6lnxt3usn2fa" path="res://gameworld/entities/ball/ball.tscn" id="9_fwcvl"]
+[ext_resource type="Script" uid="uid://jkth0o837ti5" path="res://gameworld/entities/bricks/bricks.gd" id="10_0i4oc"]
+[ext_resource type="PackedScene" uid="uid://op85vvfmyt8n" path="res://gameworld/entities/paddle/paddle.tscn" id="10_na0o7"]
+[ext_resource type="PackedScene" uid="uid://ba6uohnqmyunl" path="res://gameworld/entities/walls/wall.tscn" id="11_73k8k"]
+[ext_resource type="PackedScene" uid="uid://dgtkcktpnav54" path="res://ui/hud.tscn" id="12_fwcvl"]
+
+[node name="Main" type="Node2D" unique_id=65637059]
+script = ExtResource("1_0i4oc")
+
+[node name="GameManager" parent="." unique_id=1864755548 instance=ExtResource("1_kfbq2")]
+
+[node name="GamePlayController" type="Node" parent="GameManager" unique_id=872754735]
+script = ExtResource("3_67ri8")
+
+[node name="LevelManager" type="Node" parent="GameManager" unique_id=796410967]
+script = ExtResource("4_grrlh")
+
+[node name="MenuManager" type="Node" parent="GameManager" unique_id=1011450708]
+script = ExtResource("6_bsumw")
+
+[node name="BricksManager" type="Node" parent="GameManager" unique_id=2049329331]
+script = ExtResource("7_bsumw")
+
+[node name="GameWorld" parent="." unique_id=771796050 instance=ExtResource("2_kfbq2")]
+
+[node name="Ball" parent="GameWorld" unique_id=225415504 instance=ExtResource("9_fwcvl")]
+position = Vector2(576, 583)
+
+[node name="Paddle" parent="GameWorld" unique_id=1374792210 instance=ExtResource("10_na0o7")]
+position = Vector2(576, 600)
+
+[node name="LeftWall" parent="GameWorld" unique_id=1866239250 instance=ExtResource("11_73k8k")]
+position = Vector2(-1, -2)
+
+[node name="RightWall" parent="GameWorld" unique_id=1944825413 instance=ExtResource("11_73k8k")]
+position = Vector2(1152, -2)
+
+[node name="TopWall" parent="GameWorld" unique_id=1578235340 instance=ExtResource("11_73k8k")]
+position = Vector2(-10, -10)
+rotation = -1.5707964
+scale = Vector2(1, 1.8)
+
+[node name="Bricks" type="Node2D" parent="GameWorld" unique_id=1366793175]
+script = ExtResource("10_0i4oc")
+
+[node name="HUD" parent="." unique_id=1260922749 instance=ExtResource("12_fwcvl")]
