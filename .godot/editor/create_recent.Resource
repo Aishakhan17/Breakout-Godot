@@ -1,3 +1,0 @@
-AtlasTexture
-Resource
-Animation
