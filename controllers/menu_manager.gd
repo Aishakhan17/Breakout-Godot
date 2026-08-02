@@ -1,7 +1,8 @@
 extends Node
 class_name MenuManager
 
-var menu
+var menu: Node
+var menu_generator: Node
 var menu_generator_scene = preload("res://ui/menus/menu_generator.tscn")
  
 func _ready() -> void:
@@ -12,12 +13,12 @@ func _physics_process(delta: float) -> void:
 	
 func load_menu(game_in_progress):
 	var menu_options = fetch_menu_options(game_in_progress)
-	menu_generator_scene = menu_generator_scene.instantiate()
-	add_child(menu_generator_scene)
-	menu = menu_generator_scene.generate_menus(menu_options)
+	menu_generator = menu_generator_scene.instantiate()
+	add_child(menu_generator)
+	menu = menu_generator.generate_menus(menu_options)
 	display_menu(menu)
 	print("menu.position", menu.position)
-	menu_generator_scene.menu_option_selected.connect(_on_menu_option_selected)
+	menu_generator.menu_option_selected.connect(_on_menu_option_selected)
 
 func fetch_menu_options(game_in_progress):
 	if not game_in_progress:
@@ -42,8 +43,8 @@ func display_menu(menu):
 func _on_menu_option_selected(option_name: String):
 	match option_name:
 		"start": 
+			SignalBus.game_start.emit()
 			delete_scene()
-			$"../..".start_game()
 		"settings": 
 			#menu_generator_scene.show_settings_menu() ########this needs to be sorted
 			delete_scene()
@@ -52,5 +53,5 @@ func _on_menu_option_selected(option_name: String):
 			get_tree().quit()
 
 func delete_scene():
-	menu_generator_scene.hide_menu()
+	menu_generator.queue_free()
 	menu.queue_free()

@@ -1,0 +1,14 @@
+res://main/main.tscn
+res://controllers/gameplay_controller.gd
+res://gameworld/entities/bricks/bricks.gd
+res://controllers/bricks_manager.gd
+res://game/game_manager.gd
+res://gameworld/entities/bricks/master_brick.gd
+res://gameworld/entities/bricks/master_brick.tscn
+res://controllers/signal_bus.gd
+res://autoloads/sound_manager.gd
+res://autoloads/data_config.gd
+res://autoloads/signal_bus.gd
+res://gameworld/entities/explosion/explosion_area.gd
+res://main/main.gd
+res://controllers/menu_manager.gd

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DataConfig="*uid://8vmqs5lyandh"
 ViewportConfig="*uid://bgeo6j2tlncdf"
 SoundManager="*uid://ctav0m8fd6k0v"
+SignalBus="*uid://brbn3sp0vpfk4"
 
 [input]
 

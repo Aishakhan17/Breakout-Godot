@@ -23,7 +23,7 @@ func _ready() -> void:
 		3: background_musicL3,
 		4: background_musicL4, 
 	}
-	
+	SignalBus.brick_destroyed.connect(func(value, collider): _on_brick_destroyed)
 #===================================================================================================
 #Music Handlers
 #===================================================================================================
@@ -53,7 +53,11 @@ func play_background_music(game_level):
 	var track = background_music[game_level]
 	play_sound(track) 
 
+func _on_brick_destroyed():
+	brick_destroyed()
+	
 func brick_destroyed():
+	print('sound manager destroy brick signal called')
 	var track = brick_destroyed_sound
 	var player_used = play_sound(track)
 	await get_tree().create_timer(1).timeout
@@ -74,10 +78,6 @@ func play_sound(track):
 	assigned_player.stream = track
 	assigned_player.play()
 	return assigned_player
-
-func set_wav_configuration():
-	pass
-	
 
 	
 func stop_playing():

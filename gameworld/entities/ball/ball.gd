@@ -22,7 +22,6 @@ func _ready() -> void:
 
 #-----Called every frame. 'delta' is the elapsed time since the previous frame----------------------
 func _physics_process(delta: float) -> void:
-	print('waiting for launch', waiting_for_launch)
 	if not waiting_for_launch:
 		var displacement = move_ball(direction, delta)
 		var collision = move_and_collide(displacement)
@@ -36,10 +35,8 @@ func launch_ball(launch_direction):
 	waiting_for_launch = false
 	var new_direction = Vector2()
 	var direction_to_launch = position.direction_to(launch_direction) #similar to (b-a).normalized()
-	print("direction_to_launch", direction_to_launch)
 	new_direction.x = direction_to_launch.x
 	new_direction.y = direction_to_launch.y
-	print("new_direction", new_direction.normalized())
 	direction = new_direction
 	
 func _input(event):

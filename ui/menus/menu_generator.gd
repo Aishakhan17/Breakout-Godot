@@ -47,7 +47,7 @@ func assemble_textures():
 	
 
 func _on_option_pressed(option_name: String) -> void:
-	print("option_name", option_name)
+	#print("option_name", option_name)
 	menu_option_selected.emit(option_name)	
 
 func hide_menu():

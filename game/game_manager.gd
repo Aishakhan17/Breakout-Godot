@@ -22,6 +22,12 @@ var paddle: CharacterBody2D
 #LIFECYCLE FUNCTIONS
 #===================================================================================================
 	
+func _ready():
+	SignalBus.level_complete.connect(_on_level_complete)
+	SignalBus.game_over.connect(_on_game_over)
+	
+func _process(delta: float) -> void:
+	pass	
 
 func initialize_game_setup(game_in_progress):	
 	##--- Instantiate and Set Up Brick Grid ---
@@ -31,26 +37,30 @@ func initialize_game_setup(game_in_progress):
 	ball = $"../GameWorld/Ball"
 	paddle = $"../GameWorld/Paddle"
 	
-	bricks_manager.initialize_bricks_grid()
+	bricks_manager.initialize_bricks_generator()
 	fetch_game_data()
 	
 	#--- Initialize Sound Manager  ---
 	SoundManager.initialize_music_players()
 	SoundManager.play_background_music(game_level)
 	
-	game_start = true
-	ball.game_start = game_start
-	gameplay_controller.game_start = game_start
-	
 	set_assets_pos()
 	gameplay_controller = $GamePlayController
-	#gameplay_controller.start_game()	
+	game_start = true
+	gameplay_controller.game_start = game_start
+	gameplay_controller.start_game()
 
 func fetch_game_data():
 	#--- Load Level Configuration ---
 	game_level = level_manager.current_level
 	level_data = level_manager.fetch_level_data(game_level)
-	
+
+func _on_level_complete():
+	pass
+
+func _on_game_over():
+	game_start = false
+	end_game()
 #===================================================================================================
 #GAME RESET INITIALIZATION
 #===================================================================================================
@@ -61,18 +71,15 @@ func reset_level():
 	fetch_game_data()
 	#--- Reset Ball ---
 	ball.position = ball.ball_position
-	print("ball.position", ball.ball_position)
 	ball.SPEED = level_data["ball_speed"]
 	
 	#--- Reset Paddle --- 
 	paddle.position = paddle.paddle_position
 	paddle.SPEED = level_data["paddle_speed"]
-	print("paddle.paddle_position", paddle.paddle_position)
 	
-	
-	
-
-
+func end_game():
+	reset_level()
+	bricks_manager.destroy_bricks_grid()	
 	
 		
 

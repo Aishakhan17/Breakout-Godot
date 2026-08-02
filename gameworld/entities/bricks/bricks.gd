@@ -18,6 +18,7 @@ var usable_screen_width
 
 var bricks_dict: Dictionary
 var bricks_pos_dict: Dictionary
+var brick_count: int
 
 
 #------Called when the node enters the scene tree for the first time---------
@@ -53,24 +54,16 @@ func instantiate_brick_grid(pattern):
 			if pattern[i][j] == 1:
 				var new_brick = instantiate_brick()
 				add_child(new_brick)
-				DataConfig.brick_count += 1
-				#print("brick_width", brick_width, "brick_height", brick_height)
+				brick_count += 1
 				var new_brick_position = Vector2(
 					start_x + (j * cell_width), 
 					start_y + (i * cell_height)
 				)
 				bricks_pos_dict[new_brick] = new_brick_position	
-	display_bricks()	
-
-
-func display_bricks():
-	print("displaying bricks", bricks_pos_dict)
-	for brick in bricks_pos_dict:
-		var brick_sprite = brick.get_node('Sprite2D')
-		print("brick texture", brick_sprite.texture)
-		brick.position = bricks_pos_dict[brick]
-		print("brick.position", brick.position)
+				new_brick.position = new_brick_position
+	SignalBus.bricks_added.emit(brick_count)
 		
+
 		
 #-------------------------------------------------------------------------------
 
@@ -96,17 +89,10 @@ func instantiate_brick():
 	new_brick.value = brick_value
 	return new_brick
 
-	
-#function deletes a brick from the brick dictionary
-func delete_brick(collider):
-	bricks_pos_dict.erase(collider)
-		
+
 #function to delete brick grid instance when needed. Eg end of a game
-func destroy_bricks_grid():
-	for brick in bricks_pos_dict:
-		bricks_pos_dict.erase(brick)
-	print("desptroying grid", bricks_pos_dict.size()) 
-	
+func destroy_bricks():
+	queue_free()
 
 		
 		
