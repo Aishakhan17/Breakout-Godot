@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bc5y6b61jnoa"]
+
+[ext_resource type="Script" uid="uid://jkth0o837ti5" path="res://gameworld/entities/bricks/bricks.gd" id="1_evkis"]
+
+[node name="Bricks" type="Node2D" unique_id=1764352833]
+script = ExtResource("1_evkis")

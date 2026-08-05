@@ -24,16 +24,14 @@ var brick_height: float
 func _ready() -> void:
 	set_viewport_params()
 	get_brick_dimensions()
-	print("brick_width", brick_width, "brick_height", brick_height)
 	set_nums_cols()
 	
 
 	
 func set_viewport_params():
-	viewport_size = get_viewport_rect().size
+	viewport_size = get_viewport_rect().size 
 	usable_screen_width = viewport_size.x - (left_padding + right_padding)
 	usable_screen_height = (viewport_size.y - top_bar_height - bottom_bar_height)
-	print("viewport_size", viewport_size, "usable_screen_width", usable_screen_width, "usable_screen_height", usable_screen_height, "left_padding", left_padding, "right_padding", right_padding)
 
 func set_nums_cols():
 	num_cols = usable_screen_width/(brick_width+horizontal_spacing)
@@ -42,7 +40,6 @@ func set_nums_cols():
 		num_cols -= 1
 	if num_rows%2 == 0:
 		num_rows -= 1
-	print("num_cols", num_cols, "num_rows", num_rows)
 	
 
 func get_brick_dimensions():

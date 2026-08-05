@@ -23,16 +23,12 @@ func _ready():
 	generate_pattern_library()
 
 func set_levels():
-	print("min_rows", min_rows, "min_cols", min_cols, "max_rows", max_rows, "max_cols", max_cols)
 	var levels = 2
 	l1_rows = max(min_rows, round(max_rows/levels)) 
 	l1_cols = max(min_cols, round(max_cols/levels)) 
 	
 	l2_rows = max_rows
 	l2_cols = max_cols 
-	
-	print("levels set", "l1_rows", l1_rows, "l1_cols", l1_cols, "l2_rows", l2_rows, "l2_cols", l2_cols)
-	
 	
 func generate_pattern_library():
 	pattern_library = {
@@ -47,6 +43,7 @@ func generate_pattern_library():
 	print("generated")
 
 func fetch_spawn_pattern(level):
+	print("level from pattern lib", level)
 	if level <= pattern_library.size():
 		var pattern = pattern_library[level].call()
 		print("pattern", pattern)
@@ -70,7 +67,6 @@ func spawn_pyramid(n):
 	return arr
 		
 func spawn_maze(rows, cols):
-	print("rows", rows, "cols", cols)
 	if DataConfig.current_level == 2:
 		rows -= 2
 	var arr = []
@@ -89,8 +85,8 @@ func spawn_maze(rows, cols):
 			else:
 				sub_arr.fill(1)
 				arr.append(sub_arr) 
-	for row in arr:
-		print("row", row)
+	#for row in arr:
+		#print("row", row)
 	return arr
 	
 func spawn_tunnels(rows, cols):

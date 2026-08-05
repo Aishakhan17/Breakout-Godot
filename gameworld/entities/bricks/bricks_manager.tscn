@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://dkbqtx6jen5hn"]
+
+[ext_resource type="Script" uid="uid://bxdbc7ayx7fs2" path="res://controllers/bricks_manager.gd" id="1_vcx3i"]
+
+[node name="BricksManager" type="Node2D" unique_id=1931270911]
+script = ExtResource("1_vcx3i")

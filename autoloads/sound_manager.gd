@@ -1,12 +1,17 @@
 extends Node
+
 var brick_destroyed_sound = preload("res://art/soundreality-pop-reverb-423718.mp3")
-#var explosion = preload("res://art/explosion.wav")
+var game_over = preload("res://art/02. Battlezone Game Over.mp3")
 var background_music_L1 = preload("res://art/09. Level 4.Snd.mp3")
 var background_musicL2 = preload("res://art/07. Level 2.Snd.mp3")
 var background_musicL3 = preload("res://art/08. Level 3.Snd.mp3")
 var background_musicL4 = preload("res://art/06. Level 1.Snd.mp3")
-
+var level_complete_track = preload("res://art/game_win.mp3")
 var background_music: Dictionary
+var background_music_player
+
+var background_music_playing: bool = false
+var explosion: bool 
 const pool_size = 6
 var available_players: Array
 var players_in_use: Array
@@ -23,9 +28,43 @@ func _ready() -> void:
 		3: background_musicL3,
 		4: background_musicL4, 
 	}
-	SignalBus.brick_destroyed.connect(func(value, collider): _on_brick_destroyed)
+	SoundManager.initialize_music_players()
+	SignalBus.launch_game.connect(_on_launch_game)
+	SignalBus.level_complete.connect(_on_level_complete)
+	SignalBus.brick_destroyed.connect(func(value, collider): _on_brick_destroyed())
+	SignalBus.game_over.connect(_on_game_over)
+
+
 #===================================================================================================
-#Music Handlers
+#Signal Handlers
+#===================================================================================================
+func _on_level_complete():
+	stop_background_music()
+	background_music_playing = false
+	var track = level_complete_track
+	var player = play_sound(track)
+	player.finished.connect(_on_track_finished)
+
+func _on_launch_game():
+	SoundManager.play_background_music(DataConfig.current_level)
+	
+func _on_brick_destroyed():
+	brick_destroyed()
+
+func _on_game_over():
+	var track = game_over
+	stop_background_music()
+	background_music_playing = false
+	var player = play_sound(game_over)
+	print("game over player", player)
+	player.finished.connect(_on_track_finished)
+
+func _on_track_finished():
+	play_background_music(DataConfig.current_level)
+	
+	
+#===================================================================================================
+#Setup Functions
 #===================================================================================================
 
 func initialize_music_players():
@@ -43,31 +82,30 @@ func create_new_player():
 
 func fetch_player():
 	return available_players.pop_back()
-
+		
 #===================================================================================================
 #Music Players
 #===================================================================================================
 
 func play_background_music(game_level):
-	print("playing music")
-	var track = background_music[game_level]
-	play_sound(track) 
+	if not background_music_playing:
+		background_music_playing = true
+		var track = background_music[game_level]
+		background_music_player = play_sound(track) 
 
-func _on_brick_destroyed():
-	brick_destroyed()
-	
 func brick_destroyed():
-	print('sound manager destroy brick signal called')
 	var track = brick_destroyed_sound
 	var player_used = play_sound(track)
 	await get_tree().create_timer(1).timeout
 	if player_used:
-		player_used.queue_free()
+		player_used.stop()
 		players_in_use.pop_back()
-	
-func play_explosion():
-	pass
-	
+		available_players.append(player_used)
+
+func stop_background_music():
+	background_music_playing = false
+	background_music_player.stop()
+
 
 func play_sound(track):	
 	var idle_players = check_available_players()
@@ -87,6 +125,8 @@ func stop_playing():
 				player.queue_free()
 	available_players.clear()
 	players_in_use.clear()
+
+
 
 #===================================================================================================
 #Helper Functions

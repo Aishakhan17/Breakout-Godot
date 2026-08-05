@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://d5ef45g8qcmv"]
 
-[ext_resource type="Script" uid="uid://dhlvvmfayme7d" path="res://scripts/explosion_area.gd" id="1_aw4cw"]
+[ext_resource type="Script" uid="uid://dhlvvmfayme7d" path="res://gameworld/entities/explosion/explosion_area.gd" id="1_aw4cw"]
 [ext_resource type="Texture2D" uid="uid://bc2rcjv4y38xy" path="res://assets/explosion-1-f/Sprites.png" id="1_nfeox"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_aw4cw"]
@@ -67,8 +67,8 @@ animations = [{
 "speed": 10.0
 }]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_17npe"]
-radius = 31.397099
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7wbmq"]
+size = Vector2(94.66667, 82)
 
 [node name="Explosion" type="Area2D" unique_id=976202143]
 scale = Vector2(1.5, 1.5)
@@ -81,4 +81,5 @@ animation = &"explode"
 autoplay = "explode"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=595088055]
-shape = SubResource("CircleShape2D_17npe")
+position = Vector2(-0.66666734, 1)
+shape = SubResource("RectangleShape2D_7wbmq")

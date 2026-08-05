@@ -7,9 +7,6 @@
 [ext_resource type="Script" uid="uid://ue1bebejv5o" path="res://controllers/level_manager.gd" id="4_grrlh"]
 [ext_resource type="Script" uid="uid://bajoicqwqhlei" path="res://controllers/menu_manager.gd" id="6_bsumw"]
 [ext_resource type="Script" uid="uid://bxdbc7ayx7fs2" path="res://controllers/bricks_manager.gd" id="7_bsumw"]
-[ext_resource type="PackedScene" uid="uid://b6lnxt3usn2fa" path="res://gameworld/entities/ball/ball.tscn" id="9_fwcvl"]
-[ext_resource type="Script" uid="uid://jkth0o837ti5" path="res://gameworld/entities/bricks/bricks.gd" id="10_0i4oc"]
-[ext_resource type="PackedScene" uid="uid://op85vvfmyt8n" path="res://gameworld/entities/paddle/paddle.tscn" id="10_na0o7"]
 [ext_resource type="PackedScene" uid="uid://ba6uohnqmyunl" path="res://gameworld/entities/walls/wall.tscn" id="11_73k8k"]
 [ext_resource type="PackedScene" uid="uid://dgtkcktpnav54" path="res://ui/hud.tscn" id="12_fwcvl"]
 
@@ -24,32 +21,50 @@ script = ExtResource("3_67ri8")
 [node name="LevelManager" type="Node" parent="GameManager" unique_id=796410967]
 script = ExtResource("4_grrlh")
 
-[node name="MenuManager" type="Node" parent="GameManager" unique_id=1011450708]
-script = ExtResource("6_bsumw")
-
 [node name="BricksManager" type="Node" parent="GameManager" unique_id=2049329331]
 script = ExtResource("7_bsumw")
 
 [node name="GameWorld" parent="." unique_id=771796050 instance=ExtResource("2_kfbq2")]
 
-[node name="Ball" parent="GameWorld" unique_id=225415504 instance=ExtResource("9_fwcvl")]
-position = Vector2(576, 583)
-
-[node name="Paddle" parent="GameWorld" unique_id=1374792210 instance=ExtResource("10_na0o7")]
-position = Vector2(576, 600)
-
 [node name="LeftWall" parent="GameWorld" unique_id=1866239250 instance=ExtResource("11_73k8k")]
-position = Vector2(-1, -2)
+position = Vector2(5, 10)
 
 [node name="RightWall" parent="GameWorld" unique_id=1944825413 instance=ExtResource("11_73k8k")]
-position = Vector2(1152, -2)
+position = Vector2(1150, -2)
 
 [node name="TopWall" parent="GameWorld" unique_id=1578235340 instance=ExtResource("11_73k8k")]
-position = Vector2(-10, -10)
+position = Vector2(-9.999999, 1)
 rotation = -1.5707964
 scale = Vector2(1, 1.8)
 
-[node name="Bricks" type="Node2D" parent="GameWorld" unique_id=1366793175]
-script = ExtResource("10_0i4oc")
+[node name="HUD" parent="GameWorld" unique_id=1260922749 instance=ExtResource("12_fwcvl")]
+offset = Vector2(40, 20)
+transform = Transform2D(1.15, 0, 0, 1.15, 40, 20)
 
-[node name="HUD" parent="." unique_id=1260922749 instance=ExtResource("12_fwcvl")]
+[node name="MenuManager" type="Node" parent="." unique_id=1011450708]
+script = ExtResource("6_bsumw")
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=960048613]
+z_index = -3
+offset_left = -119.0
+offset_top = -84.0
+offset_right = 1336.0
+offset_bottom = 725.0
+color = Color(0.4253158, 0.40872762, 0.6515231, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1821292692]
+z_index = -1
+offset_top = 6.0
+offset_right = 1151.0
+offset_bottom = 646.0
+border_color = Color(0.10354368, 5.790731e-08, 1.35367735e-08, 1)
+border_width = 30.0
+editor_only = false
+
+[node name="ColorRect2" type="ColorRect" parent="." unique_id=1320075251]
+z_index = -3
+offset_left = -59.0
+offset_top = -18.0
+offset_right = 1240.0
+offset_bottom = 687.0
+color = Color(0.20758072, 0.1545409, 0, 0.32156864)

@@ -1,0 +1,40 @@
+GAME CREDITS
+============
+
+Game created by Ayesha Khan
+
+
+ART
+---
+
+Asset Name: Paddle, Ball, Bricks
+Source: itch.io
+Creator: Schwarnhild
+URL: https://schwarnhild.itch.io/brick-breaker-asset-pack
+
+Asset Name: Explosions
+Source: itch.io
+Creator: Ansimuz
+URL: https://ansimuz.itch.io/explosion-animations-pack
+
+Asset Name: Buttons
+Source: itch.io
+Creator: Snowsoul
+URL: https://snowsoul.itch.io/pixel-ui-buttons-pack-20-retro-game-buttons
+
+AUDIO
+-----
+
+Asset Name: Brick Pop audio, Background audio, Game Over audio,
+Creator: Unknown :(
+URL: ?? 
+Comments: Stuff I randomly collected over time. Most of it is free stuff from mixkit, pixaby. Background music may have been a pack from somewhere. Feel free to let me know if it's yours and i'll add credits :)
+
+
+FONTS
+-----
+
+Font Name: Public Pixel Font
+Creator: ggbotnet
+Source: fontspace
+URL:https://www.fontspace.com/ggbotnet

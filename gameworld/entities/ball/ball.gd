@@ -1,13 +1,10 @@
 extends CharacterBody2D
 
 #-------Initialize Key Parameters--------
-var window_size: Vector2
 var SPEED: int
-var destroyed: bool = false
 var direction : Vector2
-var waiting_for_launch: bool = true
-var ball_launched: bool = true
-var game_start: bool =  false
+var waiting_for_launch: bool
+var game_start: bool
 var ball_position: Vector2
 
 
@@ -16,13 +13,13 @@ var ball_position: Vector2
 #===================================================================================================
 #------Called when the node enters the scene tree for the first time---------
 func _ready() -> void:
-	#initial_position = global_position
-	window_size = get_viewport_rect().size
-	ball_position = Vector2(576, 583)
+	waiting_for_launch = true
+	SignalBus.game_start.connect(_on_game_start)
+	SignalBus.game_over.connect(_on_game_over)
 
 #-----Called every frame. 'delta' is the elapsed time since the previous frame----------------------
 func _physics_process(delta: float) -> void:
-	if not waiting_for_launch:
+	if not waiting_for_launch and game_start:
 		var displacement = move_ball(direction, delta)
 		var collision = move_and_collide(displacement)
 		if collision:
@@ -50,8 +47,8 @@ func _input(event):
 func move_ball(direction, delta):
 	return direction * SPEED * delta
 
-func reset_ball():
-	position = Vector2(576, 583)
+#func reset_ball():
+	#position = Vector2(576, 583)
 
 func collision_handler(collision):
 	direction = direction.bounce(collision.get_normal()).normalized()
@@ -62,3 +59,10 @@ func collision_handler(collision):
 		#destroyed = true
 		collider.take_damage(collider)
 		
+
+func _on_game_start():
+	game_start = true 
+
+func _on_game_over():
+	#reset_ball()
+	game_start = false

@@ -1,11 +1,15 @@
 [gd_scene format=3 uid="uid://dgtkcktpnav54"]
 
-[ext_resource type="Script" uid="uid://cjh44k5od8kxo" path="res://scripts/score.gd" id="1_ahhtf"]
-[ext_resource type="Script" uid="uid://gqtg4tw5lrgq" path="res://scripts/health_container.gd" id="2_5ysmq"]
+[ext_resource type="Script" uid="uid://cjh44k5od8kxo" path="res://ui/score/score.gd" id="1_ahhtf"]
+[ext_resource type="Script" uid="uid://gqtg4tw5lrgq" path="res://ui/health/health_container.gd" id="2_5ysmq"]
 [ext_resource type="Texture2D" uid="uid://cmg2fdsruraks" path="res://resources/heart_full.tres" id="3_6fi6k"]
 [ext_resource type="Texture2D" uid="uid://bg43xuao1tbkm" path="res://resources/heart_empty.tres" id="4_uo2fv"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_ahhtf"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_7ihmi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_7ihmi"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_en2x2"]
 
 [node name="HUD" type="CanvasLayer" unique_id=1260922749]
 scale = Vector2(1.15, 1.15)
@@ -19,6 +23,7 @@ size_flags_horizontal = 3
 [node name="PanelContainer" type="PanelContainer" parent="HBoxContainer" unique_id=1512777183]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_7ihmi")
 
 [node name="ScoreLabelContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer" unique_id=1914490765]
 layout_mode = 2
@@ -28,12 +33,13 @@ alignment = 1
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "Score: 0"
-label_settings = SubResource("LabelSettings_ahhtf")
+label_settings = SubResource("LabelSettings_7ihmi")
 script = ExtResource("1_ahhtf")
 
 [node name="PanelContainer2" type="PanelContainer" parent="HBoxContainer" unique_id=167881213]
 layout_mode = 2
 size_flags_horizontal = 4
+theme_override_styles/panel = SubResource("StyleBoxEmpty_en2x2")
 
 [node name="HealthContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer2" unique_id=534432627]
 layout_mode = 2

@@ -1,7 +1,7 @@
 extends Node
 
 #---------------- Initialize game data parameters ------------------------------
-var current_level: int = 1
+var current_level: int = DataConfig.current_level #looks redundant - verify and remove if needed later
 var levels
 
 func _ready() -> void:
@@ -38,6 +38,3 @@ func fetch_level_data(game_level):
 		var text = "Level Configuration Undefined. Loading diff level data"
 		push_error(text)
 		return levels["difficult"]
-
-func increase_current_level():
-	current_level += 1
