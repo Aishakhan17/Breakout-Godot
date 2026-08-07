@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://b5n6450ivh2y8"
+path="res://.godot/imported/06. Level 1.Snd.mp3-ba39b6430edabb6f0a12a1bd5b05b2b4.mp3str"
+
+[deps]
+
+source_file="res://art/06. Level 1.Snd.mp3"
+dest_files=["res://.godot/imported/06. Level 1.Snd.mp3-ba39b6430edabb6f0a12a1bd5b05b2b4.mp3str"]
+
+[params]
+
+loop=true
+loop_offset=0.0
+bpm=0.0
+beat_count=0
+bar_beats=4

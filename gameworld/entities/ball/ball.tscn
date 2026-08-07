@@ -38,4 +38,4 @@ target_position = Vector2(0, -73.08)
 
 [node name="Line2D" type="Line2D" parent="LaunchLine" unique_id=885369060]
 points = PackedVector2Array(0, 0, 0, 0)
-width = 5.0
+width = 2.0

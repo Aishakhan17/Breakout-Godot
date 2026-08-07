@@ -19,7 +19,7 @@ func load_menu():
 	var menu_data = fetch_menu_options()
 	var menu_options = menu_data[0]
 	var label = menu_data[-1]
-	print("menu_options", menu_options)
+	print("menu_options", menu_options, "label", back_to_main)
 	menu_generator = menu_generator_scene.instantiate()
 	add_child(menu_generator)
 	menu = menu_generator.generate_menus(menu_options, label)
@@ -35,6 +35,7 @@ func fetch_menu_options():
 		return [["reset", "back"], "Game Over. Press reset to start again or back to go to the main menu"]
 	elif level_complete:
 		print("menu manager level complete statement working")
+		level_complete = false
 		return [["next", "back"], "Level Complete. Press next to go to the next level or back to go to main menu"]
 	else:
 		return [["start", "settings", "quit"], "Main Menu"]
