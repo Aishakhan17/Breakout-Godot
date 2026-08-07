@@ -19,7 +19,7 @@ var ball_scene = preload("res://gameworld/entities/ball/ball.tscn")
 var paddle_scene = preload("res://gameworld/entities/paddle/paddle.tscn")
 var ball: CharacterBody2D
 var paddle: CharacterBody2D
-var ball_position: Vector2 = Vector2(576, 583)
+var ball_position: Vector2 = Vector2(576, 589)
 var paddle_position: Vector2 = Vector2(576, 600)
 
 
@@ -41,7 +41,6 @@ func initialize_game_setup():
 	gameplay_controller = $GamePlayController
 	gameplay_controller = $GamePlayController
 	
-	print("game_start from manager", game_start)
 	fetch_game_data()
 	initialize_assets()
 	gameplay_controller.assign_ball_paddle()
@@ -54,9 +53,9 @@ func fetch_game_data():
 	level_data = level_manager.fetch_level_data(game_level)
 
 func initialize_assets():
+	bricks_manager.initialize_bricks_generator(game_level)
 	ball = ball_scene.instantiate()
 	paddle = paddle_scene.instantiate()
-	bricks_manager.initialize_bricks_generator(game_level)
 	add_child(ball)
 	add_child(paddle)
 	ball.game_start = game_start
@@ -89,7 +88,6 @@ func end_game():
 	
 func set_assets_pos():
 	fetch_game_data()
-	print("signal fired resetting")
 	#--- Set Ball Position and Speed ---
 	ball.SPEED = level_data["ball_speed"]
 	ball.position = ball_position

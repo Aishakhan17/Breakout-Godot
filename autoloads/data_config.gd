@@ -27,6 +27,7 @@ func reduce_player_health():
 
 func _on_level_complete():
 	reset_values()
+	"res://autoloads/data_config.gd"
 	
 func _on_game_over():
 	reset_values()

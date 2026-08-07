@@ -4,7 +4,7 @@ var brick_destroyed_sound = preload("res://art/soundreality-pop-reverb-423718.mp
 var game_over = preload("res://art/02. Battlezone Game Over.mp3")
 var background_music_L1 = preload("res://art/09. Level 4.Snd.mp3")
 var background_musicL2 = preload("res://art/07. Level 2.Snd.mp3")
-var background_musicL3 = preload("res://art/08. Level 3.Snd.mp3")
+var background_musicL3 = preload("res://art/Loop 07.snd.mp3")
 var background_musicL4 = preload("res://art/06. Level 1.Snd.mp3")
 var level_complete_track = preload("res://art/game_win.mp3")
 var background_music: Dictionary
@@ -27,6 +27,7 @@ func _ready() -> void:
 		2: background_musicL2,
 		3: background_musicL3,
 		4: background_musicL4, 
+		5: background_musicL4,
 	}
 	SoundManager.initialize_music_players()
 	SignalBus.launch_game.connect(_on_launch_game)

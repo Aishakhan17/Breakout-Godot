@@ -22,6 +22,10 @@ var brick_height: float
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	pass
+	
+
+func _physics_process(delta: float) -> void:
 	set_viewport_params()
 	get_brick_dimensions()
 	set_nums_cols()
@@ -34,8 +38,8 @@ func set_viewport_params():
 	usable_screen_height = (viewport_size.y - top_bar_height - bottom_bar_height)
 
 func set_nums_cols():
-	num_cols = usable_screen_width/(brick_width+horizontal_spacing)
-	num_rows = (usable_screen_height/(brick_height+vertical_spacing))
+	num_cols = int(usable_screen_width/(brick_width+horizontal_spacing))
+	num_rows = int(usable_screen_height/(brick_height+vertical_spacing))
 	if num_cols%2 == 0:
 		num_cols -= 1
 	if num_rows%2 == 0:

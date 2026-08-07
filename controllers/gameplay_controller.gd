@@ -43,6 +43,7 @@ func _process(_delta: float) -> void:
 			elif not game_over:
 				SignalBus.reset_level.emit()
 				ball.waiting_for_launch = true
+				ball.launch_line.visible = true
 				#game_manager.reset_level()
 		#--- Check if Player has Won ---
 		elif level_complete:

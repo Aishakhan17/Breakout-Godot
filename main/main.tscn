@@ -53,7 +53,7 @@ offset_bottom = 725.0
 color = Color(0.4253158, 0.40872762, 0.6515231, 1)
 
 [node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1821292692]
-z_index = -1
+z_index = 1
 offset_top = 6.0
 offset_right = 1151.0
 offset_bottom = 646.0

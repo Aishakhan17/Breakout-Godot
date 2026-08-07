@@ -35,15 +35,12 @@ func generate_pattern_library():
 		1: Callable(self, "spawn_maze").bind(l1_rows, l1_cols),
 		2: Callable(self, "spawn_maze").bind(l2_rows, l2_cols),
 		3: Callable(self, "spawn_pyramid").bind(l2_rows),
-		4: Callable(self, "spawn_tunnels").bind(l1_rows, l1_cols),
-		5: Callable(self, "spawn_tunnels").bind(l2_rows, l2_cols),
-		6: Callable(self, "spawn_nested_squares").bind(l1_rows, l1_cols),
-		7: Callable(self, "spawn_nested_squares").bind(l2_rows, l2_cols),
+		4: Callable(self, "spawn_tunnels").bind(l2_rows, l2_cols),
+		5: Callable(self, "spawn_nested_rectangles").bind(l2_rows, l2_cols),
 	}
 	print("generated")
 
 func fetch_spawn_pattern(level):
-	print("level from pattern lib", level)
 	if level <= pattern_library.size():
 		var pattern = pattern_library[level].call()
 		print("pattern", pattern)
@@ -85,15 +82,82 @@ func spawn_maze(rows, cols):
 			else:
 				sub_arr.fill(1)
 				arr.append(sub_arr) 
-	#for row in arr:
-		#print("row", row)
 	return arr
 	
 func spawn_tunnels(rows, cols):
-	pass
-
-func spawn_nested_squares(rows, cols):
-	pass 
-				
-
+	print("rows ", rows, "cols ", cols)
+	var arr: Array
+	for i in range(rows):
+		var sub_arr: Array[int]
+		sub_arr.resize(cols)
 	
+		if i == 0 or i == 1 or i == rows -1 or i == rows -2:
+			sub_arr.fill(1)
+			arr.append(sub_arr)
+		else:
+			for j in range(cols):
+				if j%2 == 0:
+					sub_arr[j] = 1
+				else:
+					sub_arr[j] = 0
+			arr.append(sub_arr)
+			sub_arr = []
+	return arr
+
+func spawn_nested_rectangles(rows, cols):
+	#print("rows", rows, "cols", cols)
+	var arr = []
+	for i in int(rows/2):
+		var sub_arr = []
+		sub_arr.resize(cols)
+		if i%2==0:
+			var start = i
+			var end = cols -1-i
+			for k in range(len(sub_arr)):
+				if k>= start and k <= end:
+					sub_arr[k] = 1
+				else:
+					if k %2 == 0:
+						sub_arr[k] = 1
+					else:
+						sub_arr[k] = 0
+		elif i%2 != 0:
+			print("i", i)
+			for j in range(len(sub_arr)):
+				if j%2 == 0 and (j <= i or j >= len(sub_arr)-i):
+					print("j", j)
+					sub_arr[j] = 1
+				else:
+					sub_arr[j] = 0
+		arr.append(sub_arr)
+	var final_arr = []
+	final_arr += arr
+	var i = len(arr)-1
+	while i >= 0:
+		var element_to_add = arr[i]
+		final_arr.append(arr[i])
+		i -= 1
+	print("final arr", final_arr) 
+	return final_arr
+		
+
+func level_seven_pattern(rows, cols):
+	#print("rows", rows, "cols", cols)
+	var arr = []
+	for i in range(rows):
+		var sub_arr = []
+		sub_arr.resize(cols)
+		for j in range(cols):
+			sub_arr.fill(0)
+		arr.append(sub_arr)
+	
+	for i in range(len(arr)):
+		var row = arr[i]
+		for j in range(len(row)):
+			if i == 0 or i == len(arr)-1 or j == 0 or j == len(row)-1:
+				arr[i][j] = 1
+			else:
+				if arr[i-1][j-1] == 0:
+					arr[i][j] = 1
+	print("arr", arr) 
+	return arr

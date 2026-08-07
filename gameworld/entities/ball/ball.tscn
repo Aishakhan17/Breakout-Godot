@@ -32,3 +32,10 @@ sprite_frames = SubResource("SpriteFrames_cxlvu")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1246841455]
 position = Vector2(0, -1)
 shape = SubResource("CircleShape2D_f7cbr")
+
+[node name="LaunchLine" type="RayCast2D" parent="." unique_id=776481807]
+target_position = Vector2(0, -73.08)
+
+[node name="Line2D" type="Line2D" parent="LaunchLine" unique_id=885369060]
+points = PackedVector2Array(0, 0, 0, 0)
+width = 5.0
