@@ -1,8 +1,8 @@
+Control
 AnimationPlayer
 CanvasLayer
 Node
 Node2D
-Control
 CanvasGroup
 ColorRect
 TextureRect
@@ -12,4 +12,3 @@ ReferenceRect
 Panel
 StaticBody2D
 CollisionShape2D
-TextureButton

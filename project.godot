@@ -22,6 +22,11 @@ ViewportConfig="*uid://bgeo6j2tlncdf"
 SignalBus="*uid://brbn3sp0vpfk4"
 SoundManager="*uid://ctav0m8fd6k0v"
 
+[display]
+
+window/stretch/mode="canvas_items"
+window/stretch/aspect="ignore"
+
 [input]
 
 launch={

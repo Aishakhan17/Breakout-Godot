@@ -93,21 +93,42 @@ script = ExtResource("7_bsumw")
 [node name="GameWorld" type="CanvasLayer" parent="." unique_id=973772207]
 layer = 0
 
-[node name="LeftWall" parent="GameWorld" unique_id=1866239250 instance=ExtResource("11_73k8k")]
-position = Vector2(5, 10)
-
-[node name="RightWall" parent="GameWorld" unique_id=1944825413 instance=ExtResource("11_73k8k")]
-position = Vector2(1150, -2)
-
-[node name="TopWall" parent="GameWorld" unique_id=1578235340 instance=ExtResource("11_73k8k")]
-position = Vector2(-9.999999, 1)
-rotation = -1.5707964
-scale = Vector2(1, 1.8)
-
 [node name="HUD" parent="GameWorld" unique_id=1260922749 instance=ExtResource("12_fwcvl")]
 layer = 0
 offset = Vector2(40, 20)
 transform = Transform2D(1.15, 0, 0, 1.15, 40, 20)
+
+[node name="ControlLeft" type="Control" parent="GameWorld" unique_id=307020385]
+layout_mode = 3
+anchors_preset = 9
+anchor_bottom = 1.0
+grow_vertical = 2
+
+[node name="LeftWall" parent="GameWorld/ControlLeft" unique_id=1866239250 instance=ExtResource("11_73k8k")]
+position = Vector2(5, 10)
+
+[node name="ControlRight" type="Control" parent="GameWorld" unique_id=415140292]
+layout_mode = 3
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 0
+grow_vertical = 2
+
+[node name="RightWall" parent="GameWorld/ControlRight" unique_id=1944825413 instance=ExtResource("11_73k8k")]
+position = Vector2(1, -2)
+
+[node name="ControlTop" type="Control" parent="GameWorld" unique_id=570611282]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+
+[node name="TopWall" parent="GameWorld/ControlTop" unique_id=1578235340 instance=ExtResource("11_73k8k")]
+position = Vector2(-9.999999, 1)
+rotation = -1.5707964
+scale = Vector2(1, 1.8)
 
 [node name="BlurLayer" type="CanvasLayer" parent="." unique_id=807821120]
 layer = 0
