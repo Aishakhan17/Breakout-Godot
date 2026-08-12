@@ -3,7 +3,7 @@ extends Node2D
 var level_manager 
 var bricks_manager
 var gameplay_controller 
-
+var game_world
 #------- Set Game State Data --------
 var game_level: int
 var level_data: Dictionary
@@ -36,6 +36,7 @@ func _ready():
 
 func initialize_game_setup():	
 	##--- Instantiate and Set Up Brick Grid ---
+	game_world = $"../GameWorld"
 	bricks_manager = $BricksManager
 	level_manager = $LevelManager
 	gameplay_controller = $GamePlayController
@@ -56,8 +57,10 @@ func initialize_assets():
 	bricks_manager.initialize_bricks_generator(game_level)
 	ball = ball_scene.instantiate()
 	paddle = paddle_scene.instantiate()
-	add_child(ball)
-	add_child(paddle)
+	
+	game_world.add_child(ball)
+	game_world.add_child(paddle)
+	
 	ball.game_start = game_start
 	paddle.game_start = game_start
 

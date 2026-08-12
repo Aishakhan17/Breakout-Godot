@@ -38,21 +38,18 @@ func _process(_delta: float) -> void:
 			#--- Check if Game Over ---
 			game_over = check_game_over()
 			if game_over:
-				print("you lose", bricks_manager.total_bricks)
 				SignalBus.game_over.emit()
 			elif not game_over:
 				SignalBus.reset_level.emit()
 				ball.waiting_for_launch = true
 				ball.launch_line.visible = true
-				#game_manager.reset_level()
 		#--- Check if Player has Won ---
 		elif level_complete:
 			DataConfig.current_level += 1
-			#elapsed_seconds += _delta
-			#if elapsed_seconds > max_seconds:
 			SignalBus.level_complete.emit()	
 
 #===================================================================================================			
+
 func _on_game_start():
 	game_start = true
 

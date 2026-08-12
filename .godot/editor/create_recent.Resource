@@ -1,3 +1,6 @@
 AtlasTexture
+Shader
+VisualShader
+ShaderMaterial
 Resource
 Animation

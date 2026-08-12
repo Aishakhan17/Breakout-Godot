@@ -3,4 +3,5 @@
 [ext_resource type="Script" uid="uid://tbsk50r6hwpr" path="res://ui/menus/menu_button.gd" id="1_xsssc"]
 
 [node name="MenuButton" type="TextureButton" unique_id=352139621]
+z_index = 2
 script = ExtResource("1_xsssc")

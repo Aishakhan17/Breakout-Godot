@@ -1,6 +1,7 @@
-/home/aisha/Documents/Brick Breaker Godot/brick-breaker/
-res://resources/
 res://autoloads/
+res://resources/
+res://shaders/
+/home/aisha/Documents/Brick Breaker Godot/brick-breaker/
 res://controllers/
 res://gameworld/entities/bricks/
 res://gameworld/entities/paddle/

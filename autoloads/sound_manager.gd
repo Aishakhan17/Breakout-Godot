@@ -1,5 +1,6 @@
 extends Node
 
+var muted: bool = false
 var brick_destroyed_sound = preload("res://art/soundreality-pop-reverb-423718.mp3")
 var game_over = preload("res://art/02. Battlezone Game Over.mp3")
 var background_music_L1 = preload("res://art/09. Level 4.Snd.mp3")
@@ -28,12 +29,15 @@ func _ready() -> void:
 		3: background_musicL3,
 		4: background_musicL4, 
 		5: background_musicL4,
+		6: background_musicL3,
 	}
+	SoundManager.initialize_music_players()
 	SoundManager.initialize_music_players()
 	SignalBus.launch_game.connect(_on_launch_game)
 	SignalBus.level_complete.connect(_on_level_complete)
 	SignalBus.brick_destroyed.connect(func(value, collider): _on_brick_destroyed())
 	SignalBus.game_over.connect(_on_game_over)
+	SignalBus.muted.connect(_on_muted)
 
 
 #===================================================================================================
@@ -47,7 +51,7 @@ func _on_level_complete():
 	player.finished.connect(_on_track_finished)
 
 func _on_launch_game():
-	SoundManager.play_background_music(DataConfig.current_level)
+	play_background_music(DataConfig.current_level)
 	
 func _on_brick_destroyed():
 	brick_destroyed()
@@ -57,7 +61,6 @@ func _on_game_over():
 	stop_background_music()
 	background_music_playing = false
 	var player = play_sound(game_over)
-	print("game over player", player)
 	player.finished.connect(_on_track_finished)
 
 func _on_track_finished():
@@ -78,6 +81,7 @@ func check_available_players():
 	
 func create_new_player():
 	var player = AudioStreamPlayer.new()
+	player.process_mode = Node.PROCESS_MODE_ALWAYS
 	add_child(player)
 	available_players.append(player)
 
@@ -87,9 +91,15 @@ func fetch_player():
 #===================================================================================================
 #Music Players
 #===================================================================================================
+func _on_muted():
+	muted = not muted
+	if muted:
+		stop_background_music()
+	else: 
+		play_background_music(DataConfig.current_level)
 
 func play_background_music(game_level):
-	if not background_music_playing:
+	if not background_music_playing and not muted:
 		background_music_playing = true
 		var track = background_music[game_level]
 		background_music_player = play_sound(track) 
@@ -104,6 +114,7 @@ func brick_destroyed():
 		available_players.append(player_used)
 
 func stop_background_music():
+	print("stopping bg music")
 	background_music_playing = false
 	background_music_player.stop()
 

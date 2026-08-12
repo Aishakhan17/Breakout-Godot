@@ -1,6 +1,9 @@
 extends Node
 
 signal game_start()
+signal game_paused(game_paused)
+signal muted()
+signal game_resumed()
 signal launch_game()
 signal reset_level()
 signal ball_launched()

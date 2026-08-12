@@ -9,6 +9,7 @@ var resume_button = preload("res://resources/resume_button.tres")
 var reset_button = preload("res://resources/restart.tres")
 var back_button = preload("res://resources/back.tres")
 var next_button = preload("res://resources/next.tres")
+var mute_button = preload("res://resources/mute.tres")
 
 
 
@@ -30,6 +31,7 @@ func generate_menus(options, label):
 	var menu_label = Label.new()
 	menu_label.text = label
 	menu_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
+	menu_label.autowrap_mode = TextServer.AUTOWRAP_WORD
 	var font = load("res://fonts/my_font.ttf")
 	menu_label.add_theme_font_override("font", font)
 	menu_label.add_theme_constant_override("outline_size", 15)
@@ -60,7 +62,6 @@ func generate_menus(options, label):
 
 #<========================================Helpers==================================================>
 func assemble_textures():
-	print("assemble textures called")
 	return {
 		"start": start_button,
 		"settings": settings_button,
@@ -69,6 +70,7 @@ func assemble_textures():
 		"reset": reset_button,
 		"back": back_button,
 		"next": next_button,
+		"mute": mute_button,
 	}
 	
 
@@ -77,6 +79,5 @@ func _on_option_pressed(option_name: String) -> void:
 	menu_option_selected.emit(option_name)	
 
 func hide_menu():
-	print("hiding menu")
 	queue_free()
 		

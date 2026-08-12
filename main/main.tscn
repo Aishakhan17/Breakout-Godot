@@ -2,16 +2,82 @@
 
 [ext_resource type="Script" uid="uid://yt831wa41bkb" path="res://main/main.gd" id="1_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://bcuojhgcs0ok8" path="res://game/game_manager.tscn" id="1_kfbq2"]
-[ext_resource type="PackedScene" uid="uid://vorwq5us7rl8" path="res://gameworld/game_world.tscn" id="2_kfbq2"]
 [ext_resource type="Script" uid="uid://b5kke1ie1ueyw" path="res://controllers/gameplay_controller.gd" id="3_67ri8"]
 [ext_resource type="Script" uid="uid://ue1bebejv5o" path="res://controllers/level_manager.gd" id="4_grrlh"]
 [ext_resource type="Script" uid="uid://bajoicqwqhlei" path="res://controllers/menu_manager.gd" id="6_bsumw"]
 [ext_resource type="Script" uid="uid://bxdbc7ayx7fs2" path="res://controllers/bricks_manager.gd" id="7_bsumw"]
+[ext_resource type="Material" uid="uid://8aqpxctbng0u" path="res://resources/blur.tres" id="10_0i4oc"]
 [ext_resource type="PackedScene" uid="uid://ba6uohnqmyunl" path="res://gameworld/entities/walls/wall.tscn" id="11_73k8k"]
 [ext_resource type="PackedScene" uid="uid://dgtkcktpnav54" path="res://ui/hud.tscn" id="12_fwcvl"]
 
+[sub_resource type="Animation" id="Animation_grrlh"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_0i4oc"]
+resource_name = "fade_pause"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Blur:color")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0552, 1),
+"transitions": PackedFloat32Array(0.70710677, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_bsumw"]
+_data = {
+&"RESET": SubResource("Animation_grrlh"),
+&"fade_pause": SubResource("Animation_0i4oc")
+}
+
 [node name="Main" type="Node2D" unique_id=65637059]
+process_mode = 3
 script = ExtResource("1_0i4oc")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1200521279]
+layer = -1
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer" unique_id=960048613]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.4253158, 0.40872762, 0.6515231, 1)
+
+[node name="ReferenceRect" type="ReferenceRect" parent="CanvasLayer" unique_id=1821292692]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+border_color = Color(0.10354368, 5.790731e-08, 1.35367735e-08, 1)
+border_width = 30.0
+editor_only = false
+
+[node name="ColorRect2" type="ColorRect" parent="CanvasLayer" unique_id=1320075251]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.20758072, 0.1545409, 0, 0.32156864)
 
 [node name="GameManager" parent="." unique_id=1864755548 instance=ExtResource("1_kfbq2")]
 
@@ -24,7 +90,8 @@ script = ExtResource("4_grrlh")
 [node name="BricksManager" type="Node" parent="GameManager" unique_id=2049329331]
 script = ExtResource("7_bsumw")
 
-[node name="GameWorld" parent="." unique_id=771796050 instance=ExtResource("2_kfbq2")]
+[node name="GameWorld" type="CanvasLayer" parent="." unique_id=973772207]
+layer = 0
 
 [node name="LeftWall" parent="GameWorld" unique_id=1866239250 instance=ExtResource("11_73k8k")]
 position = Vector2(5, 10)
@@ -38,33 +105,33 @@ rotation = -1.5707964
 scale = Vector2(1, 1.8)
 
 [node name="HUD" parent="GameWorld" unique_id=1260922749 instance=ExtResource("12_fwcvl")]
+layer = 0
 offset = Vector2(40, 20)
 transform = Transform2D(1.15, 0, 0, 1.15, 40, 20)
 
-[node name="MenuManager" type="Node" parent="." unique_id=1011450708]
-script = ExtResource("6_bsumw")
+[node name="BlurLayer" type="CanvasLayer" parent="." unique_id=807821120]
+layer = 0
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=960048613]
-z_index = -3
-offset_left = -119.0
-offset_top = -84.0
-offset_right = 1336.0
-offset_bottom = 725.0
-color = Color(0.4253158, 0.40872762, 0.6515231, 1)
-
-[node name="ReferenceRect" type="ReferenceRect" parent="." unique_id=1821292692]
+[node name="Blur" type="ColorRect" parent="BlurLayer" unique_id=326988943]
 z_index = 1
-offset_top = 6.0
-offset_right = 1151.0
-offset_bottom = 646.0
-border_color = Color(0.10354368, 5.790731e-08, 1.35367735e-08, 1)
-border_width = 30.0
-editor_only = false
+material = ExtResource("10_0i4oc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+metadata/_edit_use_anchors_ = true
 
-[node name="ColorRect2" type="ColorRect" parent="." unique_id=1320075251]
-z_index = -3
-offset_left = -59.0
-offset_top = -18.0
-offset_right = 1240.0
-offset_bottom = 687.0
-color = Color(0.20758072, 0.1545409, 0, 0.32156864)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="BlurLayer" unique_id=1835042191]
+libraries/ = SubResource("AnimationLibrary_bsumw")
+speed_scale = 1.5
+
+[node name="MenuLayout" type="CanvasLayer" parent="." unique_id=1354866643]
+layer = 2
+
+[node name="MenuManager" type="Node2D" parent="MenuLayout" unique_id=1387262173]
+process_mode = 3
+z_index = 1
+script = ExtResource("6_bsumw")

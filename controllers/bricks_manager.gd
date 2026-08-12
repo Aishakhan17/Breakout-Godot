@@ -18,11 +18,9 @@ func initialize_bricks_generator(level):
 	spawn_manager.generate_pattern_library()
 	var spawn_pattern = spawn_manager.fetch_spawn_pattern(game_level)
 	
-	print("instantiating bricks")
 	bricks = bricks_scene.instantiate()
 	add_child(bricks)
 	bricks.instantiate_brick_grid(spawn_pattern)
-	print("total bricks", total_bricks)
 
 func destroy_bricks_grid():
 	bricks.destroy_bricks()
@@ -33,4 +31,3 @@ func _on_bricks_added(total):
 
 func _on_brick_destroyed():
 	total_bricks -= 1
-	print("updated_bricks ", total_bricks, "score ", DataConfig.score)

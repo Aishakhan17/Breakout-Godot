@@ -37,19 +37,19 @@ func generate_pattern_library():
 		3: Callable(self, "spawn_pyramid").bind(l2_rows),
 		4: Callable(self, "spawn_tunnels").bind(l2_rows, l2_cols),
 		5: Callable(self, "spawn_nested_rectangles").bind(l2_rows, l2_cols),
+		6: Callable(self, "level_seven_pattern").bind(l2_rows, l2_cols),
+		
 	}
-	print("generated")
+
 
 func fetch_spawn_pattern(level):
 	if level <= pattern_library.size():
 		var pattern = pattern_library[level].call()
-		print("pattern", pattern)
 		return pattern
 
 
 func spawn_pyramid(n):
 	var level = DataConfig.current_level
-	print("n", n)
 	var arr = []
 	var idx: int
 	for i in range(n, 0, -1):
@@ -85,7 +85,6 @@ func spawn_maze(rows, cols):
 	return arr
 	
 func spawn_tunnels(rows, cols):
-	print("rows ", rows, "cols ", cols)
 	var arr: Array
 	for i in range(rows):
 		var sub_arr: Array[int]
@@ -105,7 +104,6 @@ func spawn_tunnels(rows, cols):
 	return arr
 
 func spawn_nested_rectangles(rows, cols):
-	#print("rows", rows, "cols", cols)
 	var arr = []
 	for i in int(rows/2):
 		var sub_arr = []
@@ -122,10 +120,8 @@ func spawn_nested_rectangles(rows, cols):
 					else:
 						sub_arr[k] = 0
 		elif i%2 != 0:
-			print("i", i)
 			for j in range(len(sub_arr)):
 				if j%2 == 0 and (j <= i or j >= len(sub_arr)-i):
-					print("j", j)
 					sub_arr[j] = 1
 				else:
 					sub_arr[j] = 0
@@ -137,12 +133,10 @@ func spawn_nested_rectangles(rows, cols):
 		var element_to_add = arr[i]
 		final_arr.append(arr[i])
 		i -= 1
-	print("final arr", final_arr) 
 	return final_arr
 		
 
 func level_seven_pattern(rows, cols):
-	#print("rows", rows, "cols", cols)
 	var arr = []
 	for i in range(rows):
 		var sub_arr = []
@@ -159,5 +153,4 @@ func level_seven_pattern(rows, cols):
 			else:
 				if arr[i-1][j-1] == 0:
 					arr[i][j] = 1
-	print("arr", arr) 
 	return arr
