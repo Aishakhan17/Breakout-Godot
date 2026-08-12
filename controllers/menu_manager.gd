@@ -4,7 +4,7 @@ class_name MenuManager
 var game_launch: bool
 var game_paused: bool
 var settings_options = ["mute", "back"]
-var game_paused_options = ["settings", "back"]
+var game_paused_options = ["settings"]
 var menu: Node
 var menu_generator: Node
 var menu_generator_scene = preload("res://ui/menus/menu_generator.tscn")
@@ -86,13 +86,15 @@ func _on_menu_option_selected(option_name: String):
 				settings_selected = not settings_selected
 			SoundManager.play_background_music(DataConfig.current_level)
 			delete_scene()
-			back_to_main()
+			back_to_main()	
+			
 
 func launch_settings():
 	load_menu()
 
 func back_to_main():
-	#game_over = false
+	if game_over:
+		game_over = not game_over
 	load_menu()
 	
 func delete_scene():
