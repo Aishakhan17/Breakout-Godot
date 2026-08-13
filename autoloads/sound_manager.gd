@@ -101,6 +101,8 @@ func _on_muted():
 func play_background_music(game_level):
 	if not background_music_playing and not muted:
 		background_music_playing = true
+		if game_level > background_music.size():
+			game_level = game_level%background_music.size()
 		var track = background_music[game_level]
 		background_music_player = play_sound(track) 
 

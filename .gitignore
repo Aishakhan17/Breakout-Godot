@@ -1,0 +1,27 @@
+# Godot 4 generated/editor files
+.godot/
+
+# Godot generated/import files
+.import/
+
+# Exported builds
+build/
+
+# Export files containing potentially sensitive information
+export_credentials.cfg
+
+# Temporary files
+*.tmp
+
+# Godot generated translations
+*.translation
+
+# Mono/.NET files (only relevant if using C#)
+.mono/
+
+# Crash reports
+mono_crash.*.json
+
+# OS files
+.DS_Store
+Thumbs.db

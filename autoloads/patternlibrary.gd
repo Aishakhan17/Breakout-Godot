@@ -37,15 +37,17 @@ func generate_pattern_library():
 		3: Callable(self, "spawn_pyramid").bind(l2_rows),
 		4: Callable(self, "spawn_tunnels").bind(l2_rows, l2_cols),
 		5: Callable(self, "spawn_nested_rectangles").bind(l2_rows, l2_cols),
-		6: Callable(self, "level_seven_pattern").bind(l2_rows, l2_cols),
+		6: Callable(self, "print_corridors").bind(l2_rows, l2_cols),
 		
 	}
 
 
 func fetch_spawn_pattern(level):
-	if level <= pattern_library.size():
-		var pattern = pattern_library[level].call()
-		return pattern
+	if level > pattern_library.size():
+		level = level%pattern_library.size()
+	#if level <= pattern_library.size():
+	var pattern = pattern_library[level].call()
+	return pattern
 
 
 func spawn_pyramid(n):
@@ -136,7 +138,7 @@ func spawn_nested_rectangles(rows, cols):
 	return final_arr
 		
 
-func level_seven_pattern(rows, cols):
+func print_corridors(rows, cols):
 	var arr = []
 	for i in range(rows):
 		var sub_arr = []

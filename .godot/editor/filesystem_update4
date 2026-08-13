@@ -1,3 +1,2 @@
 res://main/main.tscn
 res://shaders/blur.gdshader
-res://controllers/menu_manager.gd

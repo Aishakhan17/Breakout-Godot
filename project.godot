@@ -27,6 +27,11 @@ SoundManager="*uid://ctav0m8fd6k0v"
 window/stretch/mode="canvas_items"
 window/stretch/aspect="ignore"
 
+[editor]
+
+version_control/plugin_name="GitPlugin"
+version_control/autoload_on_startup=true
+
 [input]
 
 launch={

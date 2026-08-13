@@ -2,7 +2,7 @@ extends Node
 
 
 #---------------- Initialize game data parameters ------------------------------
-var current_level = 1
+var current_level = 7
 var player_health: int = 3
 var score: int = 0
 var menu_options: Array
