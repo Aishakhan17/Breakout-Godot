@@ -6,6 +6,6 @@ You get three chances to destroy all the bricks to clear the level. Grey bricks 
 Ball now takes keyboard input;  use the arrow keys to set the angle to launch and press space to launch it. 
 Press esc to pause and unpause the game.
 Paddle moves with left and right keys. Game only has 6 different spawn patterns at the minute. 
-
+Game is available on itch.io @ https://ayesha007.itch.io/breakout
 ## Status
 A very small indie game built to learn godot. Game doesn't have state so every relaunch launches it from level 1. :)
