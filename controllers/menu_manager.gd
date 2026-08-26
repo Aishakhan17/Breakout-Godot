@@ -4,7 +4,10 @@ class_name MenuManager
 var game_launch: bool
 var game_paused: bool
 var settings_options = ["mute", "back"]
-var game_paused_options = ["settings"]
+var game_paused_options = ["settings", "quit"]
+var game_over_options = ["reset", "back"]
+var level_complete_options = ["next", "back"]
+var game_launch_options = ["start", "settings", "quit"]
 var menu: Node
 var menu_generator: Node
 var menu_generator_scene = preload("res://ui/menus/menu_generator.tscn")
@@ -38,12 +41,12 @@ func fetch_menu_options():
 	if game_paused:
 		return [game_paused_options, "Game Paused"]
 	if game_over:
-		return [["reset", "back"], "Game Over. Press reset to start again or back to go to the main menu"]
+		return [game_over_options, "Game Over. Press reset to start again or back to go to the main menu"]
 	if level_complete:
-		level_complete = false
-		return [["next", "back"], "Level Complete. Press next to go to the next level or back to go to main menu"]
+		level_complete = not level_complete
+		return [level_complete_options, "Level Complete. Press next to go to the next level or back to go to main menu"]
 	if game_launch:
-		return [["start", "settings", "quit"], "Main Menu"]
+		return [game_launch_options, "Main Menu"]
 
 func display_menu(menu):
 	var canvas_layer = CanvasLayer.new()

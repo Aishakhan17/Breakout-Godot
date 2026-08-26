@@ -26,8 +26,8 @@ func _ready() -> void:
 	game_world = $GameWorld
 	game_manager = $GameManager
 	
-	blur_layer.visible = false
-	game_world.visible = false
+	blur_layer.visible = not blur_layer.visible
+	game_world.visible = not game_world.visible
 	
 	menu_manager.load_menu()
 	
@@ -38,12 +38,9 @@ func start_game():
 func _input(event):
 	if game_start:
 		if event.is_action_pressed("ui_cancel"):
-			print("escape pressed")
-			print("game_paused before flipping", game_paused, get_tree().paused)
 			game_paused = not get_tree().paused
 			get_tree().paused = game_paused
 			
-			print("game_paused after flipping", game_paused)
 			SignalBus.game_paused.emit(game_paused)
 			if game_paused:
 				_on_game_paused()
@@ -51,7 +48,6 @@ func _input(event):
 				_on_game_resumed()
 				
 func _on_game_resumed():
-	print("game resuming")
 	game_world.process_mode = PROCESS_MODE_INHERIT
 	blur_layer.visible = game_paused
 	menu_manager.delete_scene()
@@ -68,8 +64,8 @@ func _on_level_complete():
 	menu_manager.load_menu()
 
 func _on_game_over():
-	game_over = true
-	set_game_params(false)
+	game_over = not game_over
+	set_game_params(not game_over)
 	menu_manager.load_menu()
 
 func set_game_params(bool_value):

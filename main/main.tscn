@@ -19,7 +19,7 @@ tracks/0/path = NodePath("Blur:color")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
+"times": PackedFloat32Array(0.0002),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 1)]
@@ -147,7 +147,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="BlurLayer" unique_id=1835042191]
 libraries/ = SubResource("AnimationLibrary_bsumw")
-speed_scale = 1.5
+speed_scale = -1.291
 
 [node name="MenuLayout" type="CanvasLayer" parent="." unique_id=1354866643]
 layer = 2

@@ -1,6 +1,6 @@
-[gd_scene format=3 uid="uid://j486e7ml552c"]
+[gd_scene format=3 uid="uid://ccrc6q5xjhtam"]
 
-[ext_resource type="PackedScene" uid="uid://t0vmtdcsn5a" path="res://scenes/master_brick.tscn" id="1_bpktg"]
+[ext_resource type="PackedScene" uid="uid://t0vmtdcsn5a" path="res://gameworld/entities/bricks/master_brick.tscn" id="1_bpktg"]
 [ext_resource type="Texture2D" uid="uid://butcqvkc17q64" path="res://assets/bricks.png" id="2_fve5c"]
 
 [node name="masterBrick" unique_id=1579908869 instance=ExtResource("1_bpktg")]

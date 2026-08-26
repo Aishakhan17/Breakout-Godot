@@ -1,10 +1,9 @@
-[gd_scene format=3 uid="uid://b5trdvdol5tlp"]
+[gd_scene format=3 uid="uid://bjucvu2v1fvsq"]
 
-[ext_resource type="PackedScene" uid="uid://t0vmtdcsn5a" path="res://scenes/master_brick.tscn" id="1_5j0ts"]
+[ext_resource type="PackedScene" uid="uid://t0vmtdcsn5a" path="res://gameworld/entities/bricks/master_brick.tscn" id="1_5j0ts"]
 [ext_resource type="Texture2D" uid="uid://butcqvkc17q64" path="res://assets/bricks.png" id="2_kwblt"]
 
 [node name="masterBrick" unique_id=1579908869 instance=ExtResource("1_5j0ts")]
-position = Vector2(0, 0)
 
 [node name="Sprite2D" parent="." index="0" unique_id=27019091]
 texture = ExtResource("2_kwblt")

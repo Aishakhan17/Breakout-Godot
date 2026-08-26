@@ -79,7 +79,7 @@ func instantiate_brick():
 	var brick_index = generate_random_number()
 	if brick_index == 4:
 		brick_type = 1
-		brick_value = 10
+		brick_value = 20
 	else:
 		brick_type = 0
 		brick_value = 10
